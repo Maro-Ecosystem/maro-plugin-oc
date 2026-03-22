@@ -1,10 +1,10 @@
- export { PromptOcDeployment } from "src/steps/deployments/PromptOcDeployment";
- export { PromptOcConfigMaps } from "src/steps/envs/PromptOcConfigMaps";
- export { PromptDeploymentSources } from "src/steps/deployments/PromptDeploymentSources";
- export { PromptOcPod } from "src/steps/pods/PromptOcPod";
- export { PromptOcPipeline } from "src/steps/pipelines/PromptOcPipleline";
- export { PromptOcSecrets } from "src/steps/envs/PromptOcSecrets";
- export { PromptOcServer } from "src/steps/servers/PromptOcServer";
+export { PromptOcDeployment } from "../steps/deployments/PromptOcDeployment";
+export { PromptOcConfigMaps } from "../steps/envs/PromptOcConfigMaps";
+export { PromptDeploymentSources } from "../steps/deployments/PromptDeploymentSources";
+export { PromptOcPod } from "../steps/pods/PromptOcPod";
+export { PromptOcPipeline } from "../steps/pipelines/PromptOcPipleline";
+export { PromptOcSecrets } from "../steps/envs/PromptOcSecrets";
+export { PromptOcServer } from "../steps/servers/PromptOcServer";
 
 export { CreateSecret } from "../steps/envs/CreateSecret";
 
