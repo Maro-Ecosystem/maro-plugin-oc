@@ -1,6 +1,6 @@
 {
   "name": "maro-plugin-oc",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "main": "./dist/src/lib/index.js",
   "types": "./dist/src/lib/index.d.ts",
   "type": "commonjs",
@@ -16,21 +16,33 @@
     "@maro/maro": "2.0.0"
   },
   "maro": {
-    "plugin": "./dist/src/index.js"
+    "plugin": "./dist/src/index.js",
+    "requires": {
+      "maro-plugin-vault": {
+        "version": "1.0.0",
+        "source": "https://github.com/Maro-Ecosystem/maro-plugin-vault.git"
+      }
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "typescript": "^5.9.3",
-    "@typescript-eslint/eslint-plugin": "8.54.0",
     "@stylistic/eslint-plugin": "2.6.5",
+    "@typescript-eslint/eslint-plugin": "8.54.0",
     "eslint": "8.57.1",
     "eslint-plugin-de-morgan": "2.0.0",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-math": "0.13.1",
     "eslint-plugin-promise": "7.2.1",
-    "eslint-plugin-unused-imports": "4.3.0"
+    "eslint-plugin-unused-imports": "4.3.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.13.6",
+    "chalk": "^5.6.2",
+    "zod": "^4.3.6",
+    "maro-plugin-vault": "1.0.0"
   }
 }
