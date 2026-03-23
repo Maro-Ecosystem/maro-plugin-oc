@@ -1,9 +1,18 @@
 import { ConfigRegistry, PluginExport } from "../../../dist/lib";
+import CronCommands from "./commands/cron";
+import EnvCommands from "./commands/env";
+import PodCommands from "./commands/pod";
+import RouteCommands from "./commands/route";
 import { OpenShiftConfig } from "./config";
 
 const plugin: PluginExport = {
   name: "maro-plugin-oc",
-  commands: [],
+  commands: [
+    RouteCommands,
+    PodCommands,
+    EnvCommands,
+    CronCommands
+  ],
   onLoad() {
     ConfigRegistry.register(new OpenShiftConfig())
   }

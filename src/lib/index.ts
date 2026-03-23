@@ -1,3 +1,5 @@
+export { GetSubApps } from "src/steps/apps/GetSubApps";
+
 export { FindProject } from "../steps/projects/FindProject";
 export { PromptOcProject } from "../steps/projects/PromptOcProject";
 
