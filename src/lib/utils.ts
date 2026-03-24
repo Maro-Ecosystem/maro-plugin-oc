@@ -24,3 +24,6 @@ export function mapObject<
   ) as Record<K, V>;
 }
 
+export function removeDuplicatesByKey<T>(arr: T[], getKey: (item: T) => string) {
+  return Array.from(new Map(arr.map((item) => [getKey(item), item])).values());
+}

@@ -1,4 +1,4 @@
-import { ConfigRegistry, PluginExport } from "../../../dist/lib";
+import { ConfigRegistry, PluginExport } from "@maro/maro";
 import CronCommands from "./commands/cron";
 import EnvCommands from "./commands/env";
 import PodCommands from "./commands/pod";

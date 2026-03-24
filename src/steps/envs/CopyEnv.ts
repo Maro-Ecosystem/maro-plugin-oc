@@ -1,4 +1,4 @@
-import { OcEnvFile } from "src/lib/files/env_file";
+import { OcEnvFile } from "../../lib/files/env_file";
 import { Project } from "../../lib";
 
 import { AppRepo, ExecutionContext, WorkflowStep } from "@maro/maro";

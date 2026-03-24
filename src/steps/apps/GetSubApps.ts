@@ -1,7 +1,7 @@
 import { AppRepo, ExecutionContext, getPaths, loading, WorkflowOptions, WorkflowStep } from "@maro/maro";
 import { Project } from "../../lib";
 import { CopyEnv } from "../envs/CopyEnv";
-import { OcEnvFile } from "src/lib/files/env_file";
+import { OcEnvFile } from "../../lib/files/env_file";
 
 type Reads = {
   app_repo: AppRepo;

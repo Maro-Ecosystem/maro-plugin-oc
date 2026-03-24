@@ -3,7 +3,7 @@ import chalk from "chalk";
 import { Command, Table, Config, ForEach, GetAppRepo, Workflow } from "@maro/maro";
 import { GetDeployments, PromptDeploymentSources, PromptOcProject, PromptOcServer } from "../../lib";
 import { Deployment } from "../../lib/oc/deployment";
-import { EnvHealth } from "src/steps/envs/EnvHealth";
+import { EnvHealth } from "../../steps/envs/EnvHealth";
 
 const HealthEnvCommand: Command = {
   name: "health",
