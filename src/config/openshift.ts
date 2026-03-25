@@ -60,8 +60,7 @@ export class OpenShiftConfig implements ConfigSection {
       { key: "project", description: "Project used to create apps", type: "string" },
       { key: "product", description: "Product label value for deployments", type: "string" },
       { key: "default_ms_type", description: "Default microservice type", type: "string" },
-      { key: "status.mock_secrets", description: "Secrets that determine whether a service is mocked", type: "string[]" },
-      { key: "status.exclusions", description: "Items excluded from status checks", type: "string[]" }
+      { key: "status.mock_secrets", description: "Secrets that determine whether a service is mocked", type: "string[]" }
     ];
   }
 
