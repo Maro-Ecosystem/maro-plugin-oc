@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-import { AppRepo, Command, Config, Dir, ForEach, Table, Workflow } from "@maro/maro";
+import { AppRepo, Command, Config, Dir, ForEach, Spinner, Table, Workflow } from "@maro/maro";
 import { PromptOcProject, PromptOcServer } from "../../lib";
 import { AppStatus } from "../../steps/apps/AppStatus";
 

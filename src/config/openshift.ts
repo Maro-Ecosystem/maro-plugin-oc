@@ -18,9 +18,12 @@ const schema = z.object({
   project: z.string().optional(),
   product: z.string().optional(),
   default_ms_type: z.enum(APP_TYPES).optional(),
-  mock_secrets: z.array(z.string()).optional(),
   username: z.string().optional(),
   password: z.string().optional(),
+  status: z.object({
+    mock_secrets: z.array(z.string()).optional(),
+    exclusions: z.array(z.string())
+  })
 });
 
 export class OpenShiftConfig implements ConfigSection {
@@ -29,6 +32,10 @@ export class OpenShiftConfig implements ConfigSection {
   defaults(): Record<string, unknown> {
     return {
       servers: {},
+      status: {
+        mock_secrets: [],
+        exclusions: []
+      },
       prod_servers: {}
     };
   }
@@ -53,7 +60,8 @@ export class OpenShiftConfig implements ConfigSection {
       { key: "project", description: "Project used to create apps", type: "string" },
       { key: "product", description: "Product label value for deployments", type: "string" },
       { key: "default_ms_type", description: "Default microservice type", type: "string" },
-      { key: "mock_secrets", description: "Secrets that determine whether a service is mocked", type: "string[]" },
+      { key: "status.mock_secrets", description: "Secrets that determine whether a service is mocked", type: "string[]" },
+      { key: "status.exclusions", description: "Items excluded from status checks", type: "string[]" }
     ];
   }
 

@@ -28,7 +28,7 @@ export class EnvHealth extends WorkflowStep<Reads, Writes> {
     }
     const active_branch = await app_repo.getActiveBranch();
     await app_repo.checkout(version);
-    const env_file_path = config.get("repos.environment_path") ?? "src/configuration/environment.ts";
+    const env_file_path = config.get("envs.environment_path") ?? "src/configuration/environment.ts";
     const env_file = app_repo.dir.getFile(env_file_path);
     if (!env_file.exists()) {
       log.warning(`Could not find env file for ${deployment.name}`);
