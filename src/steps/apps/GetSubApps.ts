@@ -1,10 +1,11 @@
 import { AppRepo, ExecutionContext, getPaths, loading, WorkflowOptions, WorkflowStep } from "@maro/maro";
-import { Project } from "../../lib";
+import { OpenshiftServer, Project } from "../../lib";
 import { CopyEnv } from "../envs/CopyEnv";
 import { OcEnvFile } from "../../lib/files/env_file";
 
 type Reads = {
   app_repo: AppRepo;
+  server: OpenshiftServer;
   project: Project;
   sub_apps?: AppRepo[];
 };
@@ -22,7 +23,7 @@ export class GetSubApps extends WorkflowStep<Reads, Writes> {
   }
 
   @loading("Getting sub apps")
-  async run(ctx: ExecutionContext, { app_repo, project, ...state }: Reads) {
+  async run(ctx: ExecutionContext, { app_repo, server, project, ...state }: Reads) {
     const backend = getPaths("backend");
     const apps = backend.map((b) => new AppRepo(b));
     const sub_apps: AppRepo[] = this.options?.reuse ? state.sub_apps ?? [] : [];
@@ -34,9 +35,9 @@ export class GetSubApps extends WorkflowStep<Reads, Writes> {
       if (depth !== undefined && currentDepth >= depth) return;
 
       const { name: app } = await repo.getInfo();
-      const env = new OcEnvFile(repo.env.path);
+      const env = new OcEnvFile(repo.env.path, server);
 
-      await new CopyEnv().run(ctx, { app_repo: repo, project });
+      await new CopyEnv().run(ctx, { app_repo: repo, project, server });
       env.internal();
 
       const { name } = await app_repo.getInfo();

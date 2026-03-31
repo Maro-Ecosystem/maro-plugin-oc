@@ -1,3 +1,5 @@
+export { OcEnvFile } from "./files/env_file";
+
 export { GetSubApps } from "../steps/apps/GetSubApps";
 
 export { FindProject } from "../steps/projects/FindProject";

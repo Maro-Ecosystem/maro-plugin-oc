@@ -15,6 +15,7 @@ export class OpenshiftServer {
   authUrl: string;
   username: string;
   password: string;
+  host: string
 
   constructor(name: string) {
     const cfg = Config.getView().get("openshift");
@@ -23,6 +24,7 @@ export class OpenshiftServer {
     this.name = name;
     this.url = serverConfig.url;
     this.authUrl = serverConfig.authUrl;
+    this.host = new URL(this.authUrl).hostname.split("oauth-openshift")[1] ?? ""
     this.username = serverConfig.username ?? cfg.username;
     this.password = serverConfig.password ?? cfg.password;
     if (!this.username) throw new Error(`No username found for server ${name}`);

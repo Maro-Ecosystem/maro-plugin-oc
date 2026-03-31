@@ -1,20 +1,21 @@
 import { OcEnvFile } from "../../lib/files/env_file";
-import { Project } from "../../lib";
+import { OpenshiftServer, Project } from "../../lib";
 
 import { AppRepo, ExecutionContext, WorkflowStep } from "@maro/maro";
 
 type Reads = {
   app_repo: AppRepo;
+  server: OpenshiftServer;
   project: Project;
 };
 
 export class CopyEnv extends WorkflowStep<Reads> {
-  async run(_: ExecutionContext, { app_repo, project }: Reads) {
+  async run(_: ExecutionContext, { app_repo, project, server }: Reads) {
     const { name } = await app_repo.getInfo();
     const deployment = await project.getDeployment(name);
     const configMaps = await deployment.getConfigMaps() ?? [];
     const secrets = deployment.getSecrets() ?? [];
-    const env = new OcEnvFile(app_repo.env.path);
+    const env = new OcEnvFile(app_repo.env.path, server);
     env.delete();
 
     for (const r of [...secrets, ...configMaps]) {
